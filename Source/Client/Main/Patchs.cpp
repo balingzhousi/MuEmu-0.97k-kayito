@@ -121,6 +121,8 @@ void CPatchs::Init()
 	// Fix Atlans and Icarus Goldens Overflow
 	MemorySet(0x00501292, 0x90, 0x0A);
 
+	SetCompleteHook(0xE9, 0x00439303, 0x004393B8); // Skip serial check
+
 	SetCompleteHook(0xE9, 0x00443AAF, 0x00443D76); // Fix Dinorant Movement
 
 	SetCompleteHook(0xE8, 0x0042B33D, &this->IgnoreRandomStuck);
@@ -154,7 +156,7 @@ void CPatchs::Init()
 
 	SetCompleteHook(0xE9, 0x005123C0, &this->MyBeginBitmap);
 
-	SetCompleteHook(0xE8, 0x004BFE63, &MyGluPerspective2); // Fix Items when changing zoom
+	SetCompleteHook(0xE9, 0x005112F0, &MyCreateScreenVector2);
 
 	SetCompleteHook(0xE8, 0x004BC0B3, &this->RenderNumArrow);
 
